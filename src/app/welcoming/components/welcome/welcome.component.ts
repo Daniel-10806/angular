@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Developer} from "../../model/developer.entity";
 
 @Component({
   selector: 'app-welcome',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './welcome.component.css'
 })
 export class WelcomeComponent {
+
+  @Input() firstName!: string;
+  @Input() lastName!: string;
+
+  get fullName(): string{
+    let developer  = new Developer(this.firstName, this.lastName);
+    return developer.fullName;
+  }
 
 }
